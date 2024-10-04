@@ -1,11 +1,11 @@
-// src/components/Product.tsx
+
 import React, { useEffect, useState } from 'react'; 
 import { Product as ProductType } from '@/interfaces/producto';
 import { useTranslation } from 'next-i18next';
 import { FaShoppingCart, FaCoins } from 'react-icons/fa'; 
 import { MdStar } from 'react-icons/md'; 
 import { useDispatch } from 'react-redux';
-import { addItem } from '@/redux/cartSlice'; // Asegúrate de importar la acción
+import { addItem } from '@/redux/cartSlice'; 
 import './Product.scss';
 
 const categoryColors: Record<string, string> = {
@@ -34,7 +34,7 @@ const Product: React.FC<{ selectedCategory: string }> = ({ selectedCategory }) =
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
-  const dispatch = useDispatch(); // Inicializa el dispatch
+  const dispatch = useDispatch(); 
 
   useEffect(() => {
     const fetchProducts = async () => {
