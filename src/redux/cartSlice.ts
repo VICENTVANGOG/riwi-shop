@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../interfaces/Product'; // Asegúrate de que esta ruta sea correcta
+import { Product } from '../interfaces/Product'; 
 
 interface CartState {
-  items: Product[]; // Cambia 'Product' a tu tipo de producto real si es necesario
+  items: Product[]; 
 }
 
 const initialState: CartState = {
