@@ -7,6 +7,7 @@ import CustomButton from '../ui/button/Button';
 import Cookies from 'js-cookie'; 
 import { LoginCredentials } from '@/interfaces/LoginCredentials'; 
 import { I18nContext } from '@/app/I18nProvider';
+import { signIn, useSession, signOut } from "next-auth/react";
 
 interface LoginFormProps {
   onSwitchToRegister: () => void; 
@@ -96,6 +97,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
         <CustomForm title={t("login.title")} onSubmit={handleSubmit}>
           <p className="form-subtitle">{t("login.subtitle")}</p>
           
+          <button
+            onClick={() => signIn('google')}
+            className="google-signin-button"
+          >
+            <img 
+              src="" 
+              alt="Sign in with Google" 
+              className="google-logo"
+            />
+          </button>
+
           <CustomLabel text={t("login.username")} htmlFor="username" />
           <CustomInput
             type="text"

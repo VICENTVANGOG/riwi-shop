@@ -3,15 +3,17 @@ import Cookies from 'js-cookie';
 
 const ClientLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
-    const checkToken = () => {
+    const checkAuthentication = () => {
       const token = Cookies.get('token');
-      if (!token) {
+      const nextAuthMessage = localStorage.getItem('nextauth.message');
+
+      if (!token && !nextAuthMessage) {
         window.location.href = '/';
       }
     };
 
-    checkToken();
-    const intervalId = setInterval(checkToken, 2000);
+    checkAuthentication();
+    const intervalId = setInterval(checkAuthentication, 2000);
 
     return () => clearInterval(intervalId);
   }, []);

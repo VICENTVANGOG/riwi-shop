@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Cookies from 'js-cookie';
 import './LogoutButton.scss';
-import { I18nContext } from '@/app/I18nProvider'; 
+import { I18nContext } from '@/app/I18nProvider';
 
 interface LogoutButtonProps {
   onLogout: () => void;
@@ -18,6 +18,8 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
 
   const handleLogout = () => {
     Cookies.remove('token'); 
+    Cookies.remove('nextauth.message'); 
+    localStorage.clear(); 
     if (onLogout) {
       onLogout();
     }
@@ -31,4 +33,3 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
 };
 
 export default LogoutButton;
-
